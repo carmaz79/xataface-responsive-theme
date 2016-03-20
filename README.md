@@ -3,6 +3,10 @@ A xataface theme with responsive technology
 
 This theme is based on http://www.egrappler.com/bootstrap-responsive-admin-template/index.html
 
+For use uncompress responsive.zip file to a directory (your theme name) created on your application theme directory. Then on your conf.ini file add the following:
+[_themes]
+your_theme_name=themes/your_theme_name
+
 For proper operation, you must make these changes to the source code Xataface:
 
 1- /xataface/Dataface/RelatedList.php
