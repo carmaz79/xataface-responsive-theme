@@ -39,7 +39,7 @@ For proper operation, you must make these changes to the source code Xataface:
 
                         echo '<ul id="'.df_escape($name).'" class="language-selection-list dropdown-menu"> 
 
-5- You can add icons to your menu. Must 
+5- You can add icons to your menu. Add this new section to your conf.ini 
 
 [_icons] ;; Is a new section on conf.ini
 
