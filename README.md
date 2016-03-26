@@ -17,7 +17,9 @@ For proper operation, you must make these changes to the source code Xataface:
 2- /xataface/Dataface/ResultList.php
 
 	Add classes to table: 
-		<table data-xataface-query="'.df_escape($sq).'" id="result_list" class="table table-striped table-bordered listing resultList resultList--'.$this->_tablename.'"> 
+		<table data-xataface-query="'.df_escape($sq).'" id="result_list" class="table table-striped table-bordered listing resultList resultList--'.$this->_tablename.'">
+	Add class to with selected actions
+		<li class="btn" id="action-{$action['id']}"><a href="{$action['url']}" onclick="{$action['onclick']}" title="{$action['description']}">{$img}{$action['label']}</a></li>
 
 3- actions.ini (can be our application file)
 	Add:
