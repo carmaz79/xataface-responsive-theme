@@ -4,6 +4,9 @@ A xataface theme module with responsive technology
 This theme is based on http://www.egrappler.com/bootstrap-responsive-admin-template/index.html
 
 For use uncompress egrappler.zip file to modules directory created on your application directory. Then on your conf.ini file add the following:
+
+disable_g2 = 1 ;;Necessary for proper working
+
 [_modules]
 modules_egrappler=modules/egrappler/egrappler.php
 
