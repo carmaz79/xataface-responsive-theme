@@ -10,7 +10,7 @@ disable_g2 = 1 ;;Necessary for proper working
 [_modules]
 modules_egrappler=modules/egrappler/egrappler.php
 
-Supports two menus (vertical an horizontal) as original xataface theme
+Supports two menus (vertical and horizontal) as original xataface theme
 
 [_prefs]
 
