@@ -10,6 +10,13 @@ disable_g2 = 1 ;;Necessary for proper working
 [_modules]
 modules_egrappler=modules/egrappler/egrappler.php
 
+Supports two menus (vertical an horizontal) as original xataface theme
+
+[_prefs]
+
+horizontal_tables_menu = 1 ;; 0/1 values
+
+
 You can add icons to your menu. Add this new section to your conf.ini 
 
 [_icons] ;; Is a new section on conf.ini
