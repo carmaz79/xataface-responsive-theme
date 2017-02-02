@@ -1,0 +1,81 @@
+{*-------------------------------------------------------------------------------
+ * Dataface Web Application Framework
+ * Copyright (C) 2005-2006  Steve Hannah (shannah@sfu.ca)
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *-------------------------------------------------------------------------------
+ *}
+
+{if $ENV.prefs.horizontal_tables_menu}
+
+<ul id="table_selection_tabs" class="mainnav">
+	{block name="tables_menu_head"}
+	{define_slot name="tables_menu_options"}
+	{foreach from=$ENV.APPLICATION._tables item=label key=table}
+		{assign var=nav value=$ENV.APPLICATION_OBJECT->getNavItem($table, $label)}
+		{if $nav}
+	<li {if $nav.selected}class="active"{/if}><a href="{$nav.href|escape}"
+                           accesskey="accesskeys-navigation"
+                           class="table-selection-tab {if $nav.selected}selected{/if}"
+                           title="{$nav.label|escape}"
+                           id="TableLink_{$table}">
+				  <i class="{if $ENV.APPLICATION._icons.$table}{$ENV.APPLICATION._icons.$table}{else}icon-table{/if}"></i>
+                                  <span>{$nav.label|escape}</span>
+                        </a></li>
+          {/if}
+ 	{/foreach}
+ 	{/define_slot}
+ 	{block name="tables_menu_tail"}
+ </ul>
+
+{else}
+
+<div id="portlet-navigation-tree" class="">
+          <div class="widget">
+            <div class="widget-header"> <i class="icon-bookmark"></i>
+              <h3>Navigation</h3>
+            </div>
+            <!-- /widget-header -->
+			{block name="tables_menu_head"}
+        	{define_slot name="tables_menu_options"}
+            <div class="widget-content">
+              <div class="shortcuts"> 
+        	{foreach from=$ENV.APPLICATION._tables item=label key=table}
+        		{assign var=nav value=$ENV.APPLICATION_OBJECT->getNavItem($table, $label)}
+        		{if $nav}
+				  <a href="{$nav.href|escape}"
+                           accesskey="accesskeys-navigation"
+                           class="shortcut navItem {if $nav.selected}currentNavItem{/if}"
+                           title="{$nav.label|escape}"
+                           id="TableLink_{$table}">
+			    <i class="{if $ENV.APPLICATION._icons.$table}{$ENV.APPLICATION._icons.$table}{else}icon-table{/if}"></i>
+                            <span class="shortcut-label navItemText">
+                                  {$nav.label|escape}
+                            </span>
+                        </a>
+				{/if}
+       		{/foreach}
+			  </div>
+              <!-- /shortcuts --> 
+            </div>
+            <!-- /widget-content --> 
+       		{/define_slot}
+			{block name="tables_menu_tail"}
+
+          </div>
+          <!-- /widget -->
+</div>
+
+{/if}

@@ -1,0 +1,121 @@
+{*-------------------------------------------------------------------------------
+ * Dataface Web Application Framework
+ * Copyright (C) 2005-2006  Steve Hannah (shannah@sfu.ca)
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *-------------------------------------------------------------------------------
+ *}
+{use_macro file="Dataface_Main_Template.html"}
+
+#################################################################
+
+	{fill_slot name="custom_stylesheets"}
+
+	<link href="{$ENV.DATAFACE_SITE_URL}/themes/responsive/css/pages/signin.css" rel="stylesheet" type="text/css">
+	{/fill_slot}
+
+	{fill_slot name="main_section"}
+		{if $ENV.user}
+		<div id="xf-already-logged-in-msg" style="display:none">{translate id="You are already logged in"}You are already logged in{/translate}</div>
+
+		<script>
+			{literal}
+				alert(document.getElementById('xf-already-logged-in-msg').innerHTML);
+				var url = window.location.href;
+				url = url.replace(/-action=login_prompt/, '');
+				window.location.href=url;
+			{/literal}
+		</script>
+		{/if}
+
+		{block name="before_login_form"}
+		{define_slot name="login_form"}
+		{if $msg}<div class="portalMessage">{$msg}</div>{/if}
+<div class="account-container">
+
+	<div class="content clearfix">
+
+		<form action="{$ENV.DATAFACE_SITE_HREF}" method="post" class="xataface-login-form">
+			
+			<input type="hidden" name="-action" value="login" />
+		{if !$redirect}
+			{assign var=rkey1 value="-redirect"}
+			{assign var=rkey2 value="-redirect"}
+			{if $ENV.QUERY.$rkey1}
+				{assign var="redirect" value=$ENV.QUERY.$rkey1}
+			{elseif $ENV.QUERY.$rkey2}
+				{assign var="redirect" value=$ENV.QUERY.$rkey2}
+			{elseif $smarty.session.$rkey1}
+				{assign var="redirect" value=$smarty.session.$rkey1}
+			{elseif $smarty.session.$rkey2}
+				{assign var="redirect" value=$smarty.session.$rkey2}
+			{/if}
+		{/if}
+			<input type="hidden" name="-redirect" value="{$redirect|escape}" />
+
+
+			<h1>{translate id="Login Form"}Login Form{/translate}</h1>		
+
+			<div class="login-fields">
+
+				<p>{translate id="Please Login"}Please Login to access this section of the site{/translate}</p>
+
+				{block name="before_login_username}
+
+				<div id="Login-Username" class="field">
+					<label for="username">{translate id="Username"}Username{/translate}:</label>
+					<input type="text" id="username" name="UserName" value="{$ENV.REQUEST.UserName|escape}" placeholder="{translate id="Username"}Username{/translate}" class="login username-field" />
+				</div> <!-- /field -->
+
+				{block name="after_login_username"}
+
+				<div id="Login-Password" class="field">
+					<label for="password">{translate id="Password"}Password{/translate}:</label>
+					<input type="password" id="password" name="Password" value="{$ENV.REQUEST.Password|escape}" placeholder="{translate id="Password"}Password{/translate}" class="login password-field"/>
+				</div> <!-- /password -->
+
+				{block name="after_login_password"}
+
+			</div> <!-- /login-fields -->
+
+			<div class="login-actions">
+
+				<input id="Login-submit" class="button btn btn-success btn-large" name="-submit" type="submit" value="{translate id="scripts.GLOBAL.LABEL_SUBMIT"}Submit{/translate}"/>
+
+				{block name="after_login_submit"}
+
+			</div> <!-- .actions -->
+
+
+		</form>
+
+		{/define_slot}
+		{block name="after_login_form"}
+
+	</div> <!-- /content -->
+
+</div> <!-- /account-container -->
+
+<div class="login-extra">
+	{actions category="login_actions" var="login_actions"}
+	<ul>
+		{foreach from=$login_actions item="action"}
+			<li><a href="{$action.url|escape}">{$action.label|escape}</a></li>
+		{/foreach}
+	</ul>
+</div> <!-- /login-extra -->
+
+	{/fill_slot}
+{/use_macro}
