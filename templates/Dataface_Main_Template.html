@@ -36,13 +36,13 @@
                 <title>{define_slot name="html_title"}{$ENV.APPLICATION_OBJECT->getPageTitle()|escape}{/define_slot}</title>
 		{define_slot name="dataface_stylesheets"}
 		{/define_slot}
-		{define_slot name="custom_stylesheets"}<!-- Stylesheets go here -->{/define_slot}
+		{define_slot name="dataface_stylesheets"}<link rel="stylesheet" type="text/css" href="{$egrappler->getBaseURL()}/css/default.css"/>{/define_slot}
 		{block name="custom_stylesheets2"}
 		{define_slot name="dataface_javascripts"}
 		<!-- Common Plone ECMAScripts -->
 	
-		
-		
+
+
 		<script type="text/javascript" language="javascript"><!--
 		DATAFACE_URL = '{$ENV.DATAFACE_URL}';
 		DATAFACE_SITE_URL = '{$ENV.DATAFACE_SITE_URL}';
@@ -64,6 +64,11 @@
 		   This was added in version 1.0 to provide an easier way to add custom
 		   Stylesheets and javascripts to the pages.
 		*}
+		<link rel="stylesheet" type="text/css" href="{$egrappler->getBaseURL()}/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="{$egrappler->getBaseURL()}/css/bootstrap-responsive.min.css"/>
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"/>
+		<link rel="stylesheet" type="text/css" href="{$egrappler->getBaseURL()}/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="{$egrappler->getBaseURL()}/css/style.css"/>
 		{foreach from=$ENV.APPLICATION_OBJECT->headContent item=headContent}
 			{$headContent}
 		{/foreach}
@@ -76,6 +81,7 @@
 		{/define_slot}
 		{include file="head_slot.html"}
 		{block name="head"}
+		{define_slot name="css_pages"}<!-- Stylesheets go here -->{/define_slot}
 	{/define_slot}
 
 
@@ -139,7 +145,8 @@
 
 							{if !$ENV.prefs.hide_language_selector}
 								{block name="before_language_selector"}
-								{define_slot name="language_selector"}{language_selector autosubmit="true" type="ul" use_flags=false}{/define_slot}
+								{define_slot name="language_selector"}
+									{language_selector autosubmit="true" type="ul" use_flags=false}{/define_slot}
 								{block name="after_language_selector"}
 							{/if}
 
@@ -198,6 +205,8 @@
 	</div>
 		<!-- /navbar -->
 
+	{define_slot name="only_top"}
+
 	{if $ENV.prefs.horizontal_tables_menu and $ENV.prefs.show_tables_menu}
 		{block name="before_nav_menu"}
 	<div class="subnavbar">
@@ -226,7 +235,7 @@
 	</div>
 	{block name="before_main_table"}
 	{define_slot name="main_table"}
-		
+
 <div class="main">
 	
 	<div class="main-inner">
@@ -368,9 +377,22 @@
 </div>
 
 	{/define_slot}
+
+	{/define_slot}
 	{define_slot name="fineprint"}
 		{block name="before_fineprint"}
+<div class="footer">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
 		{include file="Dataface_Fineprint.html"}
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
 		{block name="after_fineprint"}
 	{/define_slot}
 	{block name="before_global_footer"}
@@ -378,6 +400,7 @@
 	{block name="after_global_footer"}
 	{/define_slot}
 	{block name="javascript_tool_includes"}
+		<script src="{$egrappler->getBaseURL()}/js/bootstrap.js"></script>
 	</body>
 </html>
 {else}
