@@ -1,0 +1,22 @@
+.listing tr.table-headings th.searchable-column:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	float: right;
+	cursor: pointer;
+}
+
+th.sorted-column-asc a:before {
+	content: "\f062";
+	font-family: FontAwesome;
+	float: right;
+	cursor: pointer;
+	color: black;
+}
+
+th.sorted-column-desc a:before {
+	content: "\f063";
+	font-family: FontAwesome;
+	float: right;
+	cursor: pointer;
+	color: black;
+}
