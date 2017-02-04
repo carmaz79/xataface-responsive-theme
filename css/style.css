@@ -72,7 +72,7 @@ textarea {
 .navbar-inner {
 	padding: 7px 0;
 	
-	background: #00ba8b !important;
+	/*background: #00ba8b !important;*/
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -350,9 +350,8 @@ textarea {
 	
 	position: relative;
 	
-	height: 40px;
 	line-height: 40px;
-	
+
 	background: #f9f6f1;
 	background:-moz-linear-gradient(top, #f9f6f1 0%, #f2efea 100%); /* FF3.6+ */
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f6f1), color-stop(100%,#f2efea)); /* Chrome,Safari4+ */
@@ -1289,11 +1288,72 @@ color: #333;
 	width: 100%;
 	padding: 5px 0;
     margin: 0 .9% .2em;
+	display: -webkit-inline-box;
 }
 
 #portlet-navigation-tree .shortcuts .shortcut .currentNavItem {
 	background-color: #19bc9c;
 }
+
+.shortcuts .shortcut .shortcut-icon {
+	margin: .25em;
+	font-size: 14px;
+	color: #545454;
+}
+
+.shortcuts .shortcut-label {
+    display: block;
+    font-weight: 400;
+    color: #545454;
+}
+
+.shortcuts .shortcut {
+    vertical-align: top;
+    text-decoration: none;
+    background: #f9f6f1;
+    border-radius: 5px;
+}
+
+.shortcuts .shortcut:hover, .shortcuts .shortcut.currentNavItem {
+    background: #00ba8b;
+	color: white;
+}
+
+.shortcuts .shortcut:hover .shortcut-icon, .currentNavItem .shortcuts .shortcut .shortcut-icon  {
+    background: #00ba8b;
+	color: white;
+}
+
+.shortcuts {
+	text-align: center;	
+}
+
+.shortcuts .shortcut .shortcut-icon {
+	margin-top: .25em;
+	margin-bottom: .25em;
+	
+	color: #545454;
+}
+
+.shortcuts .shortcut:hover {
+	background: #00ba8b;
+}
+
+.shortcuts .shortcut:hover span{
+	color: #fff;
+}
+
+.shortcuts .shortcut:hover .shortcut-icon {
+	color: #fff;
+}
+
+.shortcuts .shortcut-label {
+	display: block;
+	
+	font-weight: 400;
+	color: #545454;
+}
+
 
 .resultlist-filters {
 	position: relative;
@@ -1349,3 +1409,18 @@ ul.resultController li.results-per-page {
 	padding-left: 1em;
 }
 
+.list-filter {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.language-selection-list {
+	margin: 0;
+}
+.language-selection-list li {
+	list-style: none;
+}
+
+.selected-language {
+	text-decoration: underline;
+}

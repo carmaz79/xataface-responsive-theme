@@ -125,7 +125,7 @@
 					{translate id="scripts.GLOBAL.LABEL_WITH_SELECTED"}With Selected{/translate}: 
 						{foreach from=$selected_actions item=action}
 
-							<a class="btn {if $action.class}{$action.class|escape}{else}btn-default{/if}" href="{$action.url|escape}" title="{$action.description|escape}"><i class="fa {if $action.awicon}{$action.awicon}{else}icon-magic{/if}"></i></a>
+							<a class="btn {if $action.class}{$action.class|escape}{else}btn-default{/if}" href="{$action.url|escape}" title="{$action.description|escape}"><i class="{if $action.awicon}{$action.awicon}{else}icon-bolt{/if}"></i></a>
 
 						{/foreach}				
 

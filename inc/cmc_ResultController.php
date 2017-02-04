@@ -58,6 +58,7 @@ class cmc_ResultController extends Dataface_ResultController {
 		$out = array('<div class="pagination"><h6 class="pull-left">');
         $out[] = '' . df_translate('scripts.GLOBAL.MESSAGE_FOUND', 'Found ' . $found . ' records', array('found' => $found)) . '.';
         $out[] = '' . df_translate('scripts.GLOBAL.LABEL_SHOWING', 'Showing') . ' <input style="width: inherit; text-align: center;" type="text" value="' . $limit . '" onchange="window.location = \'' . $urlprefix . '&-' . $prefix . 'limit=\'+this.value" size="1"/>' . df_translate('scripts.GLOBAL.MESSAGE_RESULTS_PER_PAGE', 'Results per page').'</h6>';
+		if (count($pages2) > 1) {
 		$out[] = '<ul class="pull-right">';
         foreach ($pages2 as $pageno => $link) {
             if ($pageno == $curr_page)
@@ -66,7 +67,9 @@ class cmc_ResultController extends Dataface_ResultController {
                 $selected = '';
             $out[] = '<li class="'.$selected.'"><a href="' . df_escape($link) . '" class="paginate_button' . $selected . '">' . $pageno . '</a></li>';
         }
-        $out[] = '</ul></div>';
+        $out[] = '</ul>';
+		}
+        $out[] = '</div>';
 
         return implode("\n", $out);
     }

@@ -1,5 +1,4 @@
 
-
 {assign var="record" value=$ENV.APPLICATION_OBJECT->getRecord()}
 {assign var="tableSingularLabel" value=$ENV.table_object->getSingularLabel()|escape}
 {assign var="recordTitle" value=$record->getTitle()|truncate:50|escape}

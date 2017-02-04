@@ -32,14 +32,14 @@ class modules_egrappler {
 		$app->registerEventListener('filterTemplateContext', array($this, 'filterTemplateContext'));
 
 		// Javascripts
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/js/jquery.packed.js').'"></script>');
+		//$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/js/jquery.packed.js').'"></script>');
 
 		// Styles & fonts
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/bootstrap.min.css').'"/>');
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/bootstrap-responsive.min.css').'"/>');
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"/>');
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/font-awesome.css').'"/>');
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/style.css').'"/>');
+		//$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/bootstrap.min.css').'"/>');
+		//$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/bootstrap-responsive.min.css').'"/>');
+		//$app->addHeadContent('<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"/>');
+		//$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/font-awesome.css').'"/>');
+		//$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($this->getBaseURL().'/css/style.css').'"/>');
 
 	//<script src="{$ENV.DATAFACE_SITE_URL}/themes/responsive/js/jquery-1.7.2.min.js"></script>
 	//<script src="{$ENV.DATAFACE_SITE_URL}/themes/responsive/js/excanvas.min.js"></script>
@@ -51,28 +51,15 @@ class modules_egrappler {
 
 
 		$jt = Dataface_JavascriptTool::getInstance();
-		$jt->ignore('jquery.packed.js');
-		$jt->ignore('jquery-ui.min.js');
-		$jt->ignore('xatajax.core.js');
-		$jt->ignore('xatajax.util.js');
-		$jt->ignore('xataface/lang.js');
-		$jt->ignoreCss('jquery-ui/jquery-ui.css');
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/js/xataface/lang.js').'"></script>');
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/modules/XataJax/js/jquery.packed.js').'"></script>');
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/modules/XataJax/js/jquery-ui.min.js').'"></script>');
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/modules/XataJax/js/xatajax.core.js').'"></script>');
-		$app->addHeadContent('<script src="'.htmlspecialchars(DATAFACE_URL.'/modules/XataJax/js/xatajax.util.js').'"></script>');
-		$app->addHeadContent('<link rel="stylesheet" type="text/css" href="'.htmlspecialchars(DATAFACE_URL.'/modules/XataJax/css/jquery-ui/jquery-ui.css').'"/>');
-
 		$jt->addPath(dirname(__FILE__).$s.'js', $this->getBaseURL().'/js');
 		$ct = Dataface_CSSTool::getInstance();
 		$ct->addPath(dirname(__FILE__).$s.'css', $this->getBaseURL().'/css');
 
-		//$jt->import('global.js');
-	
-		
+		$jt->import('jquery.packed.js');
+
+
 	}
-	
+
 	public function registerSkin(){
 		$s = DIRECTORY_SEPARATOR;
 		df_register_skin('egrappler', dirname(__FILE__).$s.'templates');
@@ -86,17 +73,17 @@ class modules_egrappler {
 
 	public function block__javascript_tool_includes(){
 
-		echo '<script src="'.htmlspecialchars($this->getBaseURL().'/js/bootstrap.js').'"></script>';
+		//echo '<script src="'.htmlspecialchars($this->getBaseURL().'/js/bootstrap.js').'"></script>';
 		//$app->addHeadContent('<script src="'.htmlspecialchars($this->getBaseURL().'/js/bootstrap.js').'"></script>');
 		//echo '<script src="'.htmlspecialchars($this->getBaseURL().'/js/base.js').'"></script>';
 
 	}
 
-	function block__bread_crumbs(){
+	/*function block__bread_crumbs(){
 
 		import( dirname(__FILE__).'/inc/new_smarty_tags.php');
 		echo cmc_bread_crumbs();
-	}
+	}*/
 
 	function block__result_list_content(){
 
@@ -142,5 +129,10 @@ class modules_egrappler {
 		echo $relatedList->toHtml();
 
 	}
-	
+
+	//function block__registration_form(){
+		//echo "xxx";
+		//return true;
+	//}
+
 }

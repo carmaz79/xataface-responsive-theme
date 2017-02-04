@@ -446,7 +446,7 @@ END;
 
 			}
 
-			echo '<label> '.df_escape($field['widget']['label']).' <select class="form-control"  onchange="resultlist__updateFilters(\''.addslashes($col).'\', this);"><option value="">'.df_translate('scripts.GLOBAL.LABEL_ALL', 'All').'</option>';
+			echo '<label class="list-filter"> '.df_escape($field['widget']['label']).' <select class="form-control"  onchange="resultlist__updateFilters(\''.addslashes($col).'\', this);"><option value="">'.df_translate('scripts.GLOBAL.LABEL_ALL', 'All').'</option>';
 
 			$res = df_query("select `$col`, count(*) as `num` ".$qb->_from()." ".$qb->_secure( $qb->_where(array($col=>null)) )." group by `$col` order by `$col`", null, true);
 			if ( !$res and !is_array($res)) trigger_error(xf_db_error(df_db()), E_USER_ERROR);

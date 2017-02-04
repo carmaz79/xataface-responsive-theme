@@ -21,12 +21,11 @@
 
 #################################################################
 
-	{fill_slot name="custom_stylesheets"}
-
-	<link href="{$ENV.DATAFACE_SITE_URL}/themes/responsive/css/pages/signin.css" rel="stylesheet" type="text/css">
+	{fill_slot name="css_pages"}
+	<link href="{$egrappler->getBaseURL()}/css/pages/signin.css" rel="stylesheet" type="text/css">
 	{/fill_slot}
 
-	{fill_slot name="main_section"}
+	{fill_slot name="only_top"}
 		{if $ENV.user}
 		<div id="xf-already-logged-in-msg" style="display:none">{translate id="You are already logged in"}You are already logged in{/translate}</div>
 
@@ -110,11 +109,9 @@
 
 <div class="login-extra">
 	{actions category="login_actions" var="login_actions"}
-	<ul>
 		{foreach from=$login_actions item="action"}
-			<li><a href="{$action.url|escape}">{$action.label|escape}</a></li>
+			<p><a href="{$action.url|escape}">{$action.label|escape}</a></p>
 		{/foreach}
-	</ul>
 </div> <!-- /login-extra -->
 
 	{/fill_slot}

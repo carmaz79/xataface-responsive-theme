@@ -23,8 +23,10 @@
 	{fill_slot name="main_section"}
 		{block name="before_record_heading"}
 		{define_slot name="record_heading"}
+			<div class="widget-header">
+				<h3 class="dataface-record-title">{if $ENV.record}{$ENV.record->getTitle()}{else}No Records Matched your Request{/if}</h3>
+			</div>
 
-			<h2 class="dataface-record-title widget-header">{if $ENV.record}<span class="dataface-current-record-prelabel"><b>{translate id="templates.Dataface_Record.LABEL_CURRENT_RECORD"}Current Record{/translate}:</b> </span>{$ENV.record->getTitle()}{else}No Records Matched your Request{/if}</h2>
 			{actions var="menus" category="record_actions"}  
 			 {if $menus|@count > 0 }
 			 <div id="contentActionsWrapper" class="controls pull-right">
@@ -41,7 +43,7 @@
 		{/define_slot}
 		{block name="after_record_heading"}
 		{block name="before_record_tabs"}
-		{if $ENV.prefs.show_record_tabs}{record_tabs mincount=2 id="record_tabs" id_prefix="record-tabs-" class="contentViews nav nav-tabs" selected_action=$ENV.mode}
+		{if $ENV.prefs.show_record_tabs}{record_tabs mincount=1 id="record_tabs" id_prefix="record-tabs-" class="contentViews nav nav-tabs" selected_action=$ENV.mode}
 		
 		<div class="documentContent" id="region-content" style="">
 		{/if}

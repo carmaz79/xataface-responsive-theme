@@ -17,28 +17,4 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *-------------------------------------------------------------------------------
  *}
-{use_macro file="Dataface_Main_Template.html"}
-
-	{fill_slot name="css_pages"}
-	<link href="{$egrappler->getBaseURL()}/css/pages/signin.css" rel="stylesheet" type="text/css">
-	{/fill_slot}
-
-	{fill_slot name="only_top"}
-		{block name="before_registration_form"}
-		{define_slot name="registration_form"}
-		<div class="account-container register">
-
-			<div class="content clearfix login-fields">
-
-			{define_slot name="registration_form_label"}
-				<h1>{translate id="Dataface_Registration.label"}Registration Form{/translate}</h1>
-			{/define_slot}
-			{$registration_form}
-
-			</div>
-
-		</div>
-		{/define_slot}
-		{block name="after_registration_form"}
-	{/fill_slot}
-{/use_macro}
+<img src="{$ENV.DATAFACE_URL}/images/logo-small.jpg" alt="Dataface Web Application Framework"/>

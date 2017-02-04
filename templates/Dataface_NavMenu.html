@@ -51,7 +51,7 @@
 			{block name="tables_menu_head"}
         	{define_slot name="tables_menu_options"}
             <div class="widget-content">
-              <div class="shortcuts"> 
+              <div class="shortcuts menu"> 
         	{foreach from=$ENV.APPLICATION._tables item=label key=table}
         		{assign var=nav value=$ENV.APPLICATION_OBJECT->getNavItem($table, $label)}
         		{if $nav}
@@ -60,7 +60,7 @@
                            class="shortcut navItem {if $nav.selected}currentNavItem{/if}"
                            title="{$nav.label|escape}"
                            id="TableLink_{$table}">
-			    <i class="{if $ENV.APPLICATION._icons.$table}{$ENV.APPLICATION._icons.$table}{else}icon-table{/if}"></i>
+			    <i class="shortcut-icon {if $ENV.APPLICATION._icons.$table}{$ENV.APPLICATION._icons.$table}{else}icon-table{/if}"></i>
                             <span class="shortcut-label navItemText">
                                   {$nav.label|escape}
                             </span>

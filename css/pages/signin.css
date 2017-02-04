@@ -245,3 +245,48 @@ span.login-checkbox > input[type='checkbox']:checked + label {
 	}
 	
 }
+
+/*added*/
+.login-fields .form-horizontal .control-group {
+    margin-bottom: 0px;
+}
+
+.login-fields .form-horizontal .controls {
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+.login-fields .help-block {
+	display: none;
+}
+
+.login-fields label {
+	display: block;
+	font: 13px/1.7em 'Open Sans';
+    color: #8e8d8d;
+	text-align: left !important;
+	margin-left: 15px;
+}
+
+.Dataface_collapsible_sidebar {
+	display: none;
+}
+
+#users-conditionsaccept-label-wrapper {
+	display: none;
+}
+
+#users-conditionsaccept-wrapper {
+}
+
+#users-conditionsaccept-wrapper div{
+	display: inline-block;
+}
+
+#users-conditionsaccept-wrapper input {
+	width: initial;
+}
+
+#users-conditionsaccept-wrapper .help-block {
+	display: inline-block;
+}
